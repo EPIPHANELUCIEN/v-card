@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour Aminata 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ffb6d9,#ff4fa3);
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+.card{
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(12px);
+  padding:60px 40px;
+  border-radius:30px;
+  text-align:center;
+  max-width:650px;
+  color:white;
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:55px;
+  margin-bottom:25px;
+}
+
+p{
+  font-size:19px;
+  line-height:1.9;
+}
+
+.signature{
+  margin-top:30px;
+  font-size:22px;
+  font-style:italic;
+}
+
+.heart{
+  position:absolute;
+  color:rgba(255,255,255,0.8);
+  animation:float 7s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-900px);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>💘 Joyeuse Saint-Valentin 💘</h1>
+
+<p>
+Merci d’être toi.<br>
+Merci pour ta douceur, ton regard, ton énergie.<br>
+Je suis reconnaissant de t’avoir dans ma vie.<br><br>
+<strong>Joyeuse Saint-Valentin Aminata ❤️</strong>
+</p>
+
+<div class="signature">
+Avec tout mon amour 💕
+</div>
+</div>
+
+<script>
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*25+15+"px";
+heart.style.animationDuration=Math.random()*4+4+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},7000);
+}
+setInterval(createHeart,400);
+</script>
+
+</body>
+</html>

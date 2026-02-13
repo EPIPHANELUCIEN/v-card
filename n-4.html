@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Message 💕</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff9ecf,#ff4fa3);
+  color:white;
+  font-family:monospace;
+  text-align:center;
+}
+
+.card{
+  max-width:600px;
+}
+
+.footer{
+  position:absolute;
+  bottom:10px;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>💖 Joyeuse Saint-Valentin 💖</h2>
+<p id="text"></p>
+<p><i>Avec tout mon amour 💕</i></p>
+<button onclick="sharePage()">Partager</button>
+</div>
+
+<div class="footer">
+par <a href="https://epiphanelucien.github.io/Portfolio/" style="color:white;">Pifa Créatif</a>
+</div>
+
+<script>
+const message=`Merci d’être toi.
+Merci pour ta douceur, ton regard, ton énergie.
+Je suis reconnaissant de t’avoir dans ma vie.
+
+Joyeuse Saint-Valentin Aminata ❤️`;
+
+let i=0;
+function typeWriter(){
+  if(i<message.length){
+    document.getElementById("text").innerHTML+=message.charAt(i);
+    i++;
+    setTimeout(typeWriter,40);
+  }
+}
+typeWriter();
+
+function sharePage(){
+  if(navigator.share){
+    navigator.share({title:"Valentin",url:window.location.href});
+  }else{
+    navigator.clipboard.writeText(window.location.href);
+    alert("Lien copié !");
+  }
+}
+</script>
+
+</body>
+</html>

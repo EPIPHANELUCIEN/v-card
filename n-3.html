@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pour Toi 🌹</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#ff4fa3;
+  color:white;
+  font-family:Arial;
+  overflow:hidden;
+  text-align:center;
+}
+
+.card{
+  background:rgba(255,255,255,0.2);
+  padding:40px;
+  border-radius:20px;
+}
+
+.petal{
+  position:absolute;
+  font-size:20px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(100vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+.footer{
+  position:absolute;
+  bottom:10px;
+  font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>💘 Joyeuse Saint-Valentin 💘</h2>
+<p>
+Merci d’être toi.<br>
+Merci pour ta douceur, ton regard, ton énergie.<br>
+Je suis reconnaissant de t’avoir dans ma vie.<br><br>
+<strong>Joyeuse Saint-Valentin Aminata ❤️</strong>
+</p>
+<p><i>Avec tout mon amour 💕</i></p>
+<button onclick="sharePage()">Partager</button>
+</div>
+
+<div class="footer">
+par <a href="https://epiphanelucien.github.io/Portfolio/" style="color:white;">Pifa Créatif</a>
+</div>
+
+<script>
+function createPetal(){
+  const petal=document.createElement("div");
+  petal.classList.add("petal");
+  petal.innerHTML="🌹";
+  petal.style.left=Math.random()*100+"vw";
+  petal.style.animationDuration=Math.random()*3+4+"s";
+  document.body.appendChild(petal);
+  setTimeout(()=>petal.remove(),7000);
+}
+setInterval(createPetal,300);
+
+function sharePage(){
+  if(navigator.share){
+    navigator.share({title:"Valentin",url:window.location.href});
+  }else{
+    navigator.clipboard.writeText(window.location.href);
+    alert("Lien copié !");
+  }
+}
+</script>
+
+</body>
+</html>

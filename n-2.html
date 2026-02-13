@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n-2 💌</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff9ecf,#ff4fa3);
+  font-family:Arial;
+  overflow:hidden;
+}
+
+.envelope{
+  width:300px;
+  height:200px;
+  background:#ff4fa3;
+  position:relative;
+  cursor:pointer;
+  border-radius:10px;
+}
+
+.flap{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ff2a8a;
+  clip-path:polygon(0 0,100% 0,50% 60%);
+  transition:0.8s;
+  transform-origin:top;
+}
+
+.letter{
+  position:absolute;
+  top:20px;
+  left:20px;
+  right:20px;
+  bottom:20px;
+  background:white;
+  padding:20px;
+  text-align:center;
+  transform:translateY(100%);
+  transition:0.8s;
+  overflow:auto;
+}
+
+.open .flap{
+  transform:rotateX(180deg);
+}
+
+.open .letter{
+  transform:translateY(0);
+}
+
+button{
+  margin-top:15px;
+  padding:8px 15px;
+  border:none;
+  border-radius:20px;
+  background:#ff4fa3;
+  color:white;
+  cursor:pointer;
+}
+
+.footer{
+  position:absolute;
+  bottom:10px;
+  font-size:12px;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openEnvelope(this)">
+<div class="flap"></div>
+
+<div class="letter">
+<h3>💖 Joyeuse Saint-Valentin 💖</h3>
+<p>
+Merci d’être toi.<br>
+Merci pour ta douceur, ton regard, ton énergie.<br>
+Je suis reconnaissant de t’avoir dans ma vie.<br><br>
+<strong>Joyeuse Saint-Valentin Aminata ❤️</strong>
+</p>
+<p><i>Avec tout mon amour 💕</i></p>
+
+<button onclick="sharePage(event)">Partager 💌</button>
+</div>
+</div>
+
+<div class="footer">
+par <a href="https://epiphanelucien.github.io/Portfolio/" style="color:white;">Pifa Créatif</a>
+</div>
+
+<script>
+function openEnvelope(el){
+  el.classList.toggle("open");
+}
+
+function sharePage(e){
+  e.stopPropagation();
+  if(navigator.share){
+    navigator.share({
+      title:"Joyeuse Saint-Valentin",
+      text:"Un message pour toi ❤️",
+      url:window.location.href
+    });
+  }else{
+    navigator.clipboard.writeText(window.location.href);
+    alert("Lien copié !");
+  }
+}
+</script>
+
+</body>
+</html>
