@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeuse Saint-Valentin | [Nom de votre Entreprise]</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ff4fa3;
+            --overlay-dark: rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffb6d9, #ff4fa3);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Arrière-plan Carrousel */
+        .slideshow-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .mySlides {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .active-slide { opacity: 1; }
+
+        /* Overlay pour lisibilité */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1;
+        }
+
+        .logo {
+            max-width: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(35px, 8vw, 50px);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        /* Bouton Voir nos articles */
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+
+        .share-link {
+            display: block;
+            color: white;
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Coeurs animés */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            animation: float linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 15px;
+            font-size: 11px;
+            color: white;
+            opacity: 0.7;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slideshow-container">
+        <div class="mySlides active-slide" style="background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1000')"></div>
+        <div class="mySlides" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=1000')"></div>
+        <div class="mySlides" style="background-image: url('https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&q=80&w=1000')"></div>
+    </div>
+    
+    <div class="overlay"></div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/150x50/ffffff/ff4fa3?text=VOTRE+LOGO" alt="Logo Entreprise" class="logo">
+        
+        <h1>Joyeuse Saint-Valentin</h1>
+
+        <p>
+            Parce que chaque client est unique à nos yeux, <br>
+            nous profitons de cette fête de l'amour pour vous <br>
+            remercier de votre fidélité. <br><br>
+            Célébrez les moments qui comptent avec élégance.
+        </p>
+
+        <a href="VOTRE_LIEN_BOUTIQUE" class="cta-btn">Voir nos articles 🎁</a>
+        
+        <span class="share-link" onclick="sharePage()">Partager cette attention 💌</span>
+    </div>
+
+    <div class="footer">
+        © 2026 [Nom de votre Entreprise] | Créé par <a href="#" style="color:white">Pifa Créatif</a>
+    </div>
+
+    <script>
+        // Gestion du Carrousel
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("mySlides");
+
+        function showSlides() {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active-slide");
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex-1].classList.add("active-slide");
+            setTimeout(showSlides, 4000); // Change d'image toutes les 4 secondes
+        }
+        showSlides();
+
+        // Pluie de coeurs
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 10 + "px";
+            heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 600);
+
+        // Fonction Partager
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: "Joyeuse Saint-Valentin",
+                    text: "Découvrez la sélection de Saint-Valentin !",
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Lien de la boutique copié !");
+            }
+        }
+    </script>
+
+</body>
+</html>
