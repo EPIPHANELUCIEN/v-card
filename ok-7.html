@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bon mois de Carême</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+  position:relative;
+
+  /* IMAGE DE FOND */
+  background:url("https://plus.unsplash.com/premium_photo-1676232732108-27c7ff6dc5cd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center/cover;
+}
+
+/* Overlay sombre */
+body::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:0;
+}
+
+.card{
+  position:relative;
+  z-index:1;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(15px);
+  padding:50px 35px;
+  border-radius:25px;
+  text-align:center;
+  max-width:700px;
+  color:white;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Petite image encadrée */
+.header-img{
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:15px;
+  border:3px solid #facc15;
+  margin-bottom:15px;
+}
+
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:50px;
+  margin-bottom:20px;
+  color:#facc15;
+}
+
+.verse{
+  margin-top:10px;
+  font-style:italic;
+  font-size:16px;
+  opacity:0.95;
+}
+
+.verse sup{
+  font-size:12px;
+}
+
+p{
+  margin-top:20px;
+  font-size:18px;
+  line-height:1.8;
+}
+
+.signature{
+  margin-top:30px;
+  font-size:20px;
+  font-style:italic;
+  color:#facc15;
+}
+
+/* Bouton partager */
+.share-btn{
+  margin-top:25px;
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:#facc15;
+  color:#14532d;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* Footer */
+.footer{
+  position:absolute;
+  bottom:10px;
+  font-size:12px;
+  color:white;
+  opacity:0.8;
+}
+
+.footer a{
+  color:#facc15;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* Animation étoiles */
+.star{
+  position:absolute;
+  color:rgba(255,255,255,0.8);
+  animation:float 8s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-900px);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<!-- Petite image encadrée -->
+<img src="https://thumbs.dreamstime.com/b/ramadan-icon-moon-ornament-pattern-inside-glowing-lantern-islam-muslim-arabic-mixed-design-style-holy-month-436494183.jpg" class="header-img" alt="Ramadan">
+
+<h1>Bon mois de Carême</h1>
+
+<!-- Verset AVANT le message -->
+<div class="verse">
+« Ô vous qui avez cru ! Le jeûne vous a été prescrit comme il a été prescrit à ceux d’avant vous, afin que vous atteigniez la piété. » 
+<sup>(Sourate Al-Baqara 2:183)</sup>
+</div>
+
+<p>
+À nos chers professeurs,<br><br>
+Que ce Ramadan vous apporte autant de lumière que vous en apportez à vos élèves.
+Votre patience et votre engagement sont une source d’inspiration précieuse.
+</p>
+
+<div class="signature">
+Qu’Allah vous récompense au-delà de vos espérances.
+</div>
+
+<button class="share-btn" onclick="sharePage()">Partager 🤲</button>
+
+</div>
+
+<div class="footer">
+par <a href="https://epiphanelucien.github.io/Portfolio/" target="_blank">Pifa Créatif</a>
+</div>
+
+<script>
+function createStar(){
+const star=document.createElement("div");
+star.classList.add("star");
+star.innerHTML="✦";
+star.style.left=Math.random()*100+"vw";
+star.style.fontSize=Math.random()*25+10+"px";
+star.style.animationDuration=Math.random()*4+5+"s";
+document.body.appendChild(star);
+setTimeout(()=>{star.remove();},8000);
+}
+setInterval(createStar,500);
+
+function sharePage(){
+if(navigator.share){
+navigator.share({
+title:"Bon mois de Carême",
+text:"Un message spécial pour nos professeurs 🤲",
+url:window.location.href
+});
+}else{
+navigator.clipboard.writeText(window.location.href);
+alert("Lien copié !");
+}
+}
+</script>
+
+</body>
+</html>
