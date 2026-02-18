@@ -8,64 +8,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+/* ------------------- BODY & FOND ------------------- */
 body{
   margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   font-family:'Poppins',sans-serif;
-  overflow:hidden;
-  position:relative;
-
-  /* IMAGE DE FOND */
+  min-height:100vh;
   background:url("https://plus.unsplash.com/premium_photo-1676232732108-27c7ff6dc5cd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center/cover;
+  overflow-x:hidden;
+  overflow-y:auto;
+  position:relative;
 }
 
 /* Overlay sombre */
 body::before{
   content:"";
-  position:absolute;
+  position:fixed;
   width:100%;
   height:100%;
   background:rgba(0,0,0,0.6);
   z-index:0;
 }
 
+/* ------------------- CONTAINER ------------------- */
+.wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:40px 20px;
+  z-index:1;
+  position:relative;
+}
+
+/* ------------------- CARTE TRANSPARENTE ------------------- */
 .card{
   position:relative;
   z-index:1;
   background:rgba(255,255,255,0.12);
   backdrop-filter:blur(15px);
-  padding:50px 35px;
+  padding:40px 25px;
   border-radius:25px;
   text-align:center;
+  width:90%;
   max-width:700px;
   color:white;
   box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  margin-bottom:30px; /* espace avant le footer */
 }
 
-/* Petite image encadrée */
+/* ------------------- IMAGE DANS LA CARTE ------------------- */
 .header-img{
-  width:90px;
-  height:90px;
+  width:80px;
+  height:80px;
   object-fit:cover;
   border-radius:15px;
   border:3px solid #facc15;
   margin-bottom:15px;
 }
 
+/* ------------------- TEXTE ------------------- */
 h1{
   font-family:'Great Vibes',cursive;
-  font-size:50px;
-  margin-bottom:20px;
+  font-size:40px;
+  margin-bottom:15px;
   color:#facc15;
 }
 
 .verse{
   margin-top:10px;
   font-style:italic;
-  font-size:16px;
+  font-size:15px;
   opacity:0.95;
 }
 
@@ -75,40 +86,44 @@ h1{
 
 p{
   margin-top:20px;
-  font-size:18px;
-  line-height:1.8;
+  font-size:16px;
+  line-height:1.7;
 }
 
 .signature{
-  margin-top:30px;
-  font-size:20px;
+  margin-top:25px;
+  font-size:18px;
   font-style:italic;
   color:#facc15;
 }
 
-/* Bouton partager */
+/* ------------------- BOUTON ------------------- */
 .share-btn{
-  margin-top:25px;
-  padding:10px 20px;
+  margin-top:20px;
+  padding:12px 20px;
   border:none;
   border-radius:25px;
   background:#facc15;
   color:#14532d;
   font-weight:600;
   cursor:pointer;
+  width:100%;
+  max-width:250px;
+  transition:0.3s;
 }
 
-/* Footer */
+.share-btn:hover{
+  transform:scale(1.05);
+}
+
+/* ------------------- FOOTER ------------------- */
 .footer{
-  position:fixed;
-  bottom:10px;
-  left:0;
-  width:100%;
   text-align:center;
   font-size:12px;
   color:white;
   opacity:0.8;
-  z-index:2;
+  margin-bottom:30px;
+  z-index:1;
 }
 
 .footer a{
@@ -117,80 +132,92 @@ p{
   font-weight:bold;
 }
 
-/* Animation étoiles */
+/* ------------------- ANIMATION ÉTOILES ------------------- */
 .star{
-  position:absolute;
+  position:fixed;
+  bottom:-20px;
   color:rgba(255,255,255,0.8);
   animation:float 8s linear infinite;
 }
 
 @keyframes float{
   0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-900px);opacity:0;}
+  100%{transform:translateY(-100vh);opacity:0;}
+}
+
+/* ------------------- RESPONSIVE ------------------- */
+@media(max-width:480px){
+  h1{font-size:32px;}
+  p{font-size:15px;}
+  .verse{font-size:14px;}
+  .share-btn{max-width:100%;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="wrapper">
 
-<!-- Petite image encadrée -->
-<img src="https://thumbs.dreamstime.com/b/ramadan-icon-moon-ornament-pattern-inside-glowing-lantern-islam-muslim-arabic-mixed-design-style-holy-month-436494183.jpg" class="header-img" alt="Ramadan">
+  <!-- CARTE TRANSPARENTE -->
+  <div class="card">
+    <img src="https://thumbs.dreamstime.com/b/ramadan-icon-moon-ornament-pattern-inside-glowing-lantern-islam-muslim-arabic-mixed-design-style-holy-month-436494183.jpg" class="header-img" alt="Ramadan">
 
-<h1>Bon mois de Carême</h1>
+    <h1>Bon mois de Carême</h1>
 
-<!-- Verset AVANT le message -->
-<div class="verse">
-« Ô vous qui avez cru ! Le jeûne vous a été prescrit comme il a été prescrit à ceux d’avant vous, afin que vous atteigniez la piété. » 
-<sup>(Sourate Al-Baqara 2:183)</sup>
-</div>
+    <div class="verse">
+      « Ô vous qui avez cru ! Le jeûne vous a été prescrit comme il a été prescrit à ceux d’avant vous, afin que vous atteigniez la piété. »
+      <sup>(Sourate Al-Baqara 2:183)</sup>
+    </div>
 
-<p>
-À nos chers professeurs,<br><br>
-Que ce Ramadan vous apporte autant de lumière que vous en apportez à vos élèves.
-Votre patience et votre engagement sont une source d’inspiration précieuse.
-</p>
+    <p>
+      À nos chers professeurs,<br><br>
+      Que ce Ramadan vous apporte autant de lumière que vous en apportez à vos élèves.
+      Votre patience et votre engagement sont une source d’inspiration précieuse.
+    </p>
 
-<div class="signature">
-Qu’Allah vous récompense au-delà de vos espérances.
-</div>
+    <div class="signature">
+      Qu’Allah vous récompense au-delà de vos espérances.
+    </div>
 
-<button class="share-btn" onclick="sharePage()">Partager 🤲</button>
+    <button class="share-btn" onclick="sharePage()">Partager 🤲</button>
+  </div>
 
-</div>
+  <!-- FOOTER EN BAS DE LA CARTE -->
+  <div class="footer">
+    par <a href="https://epiphanelucien.github.io/Portfolio/" target="_blank">Pifa Créatif</a>
+  </div>
 
-<div class="footer">
-par <a href="https://epiphanelucien.github.io/Portfolio/" target="_blank">Pifa Créatif</a>
 </div>
 
 <script>
+/* ------------------- ÉTOILES ------------------- */
 function createStar(){
-const star=document.createElement("div");
-star.classList.add("star");
-star.innerHTML="✦";
-star.style.left=Math.random()*100+"vw";
-star.style.fontSize=Math.random()*25+10+"px";
-star.style.animationDuration=Math.random()*4+5+"s";
-document.body.appendChild(star);
-setTimeout(()=>{star.remove();},8000);
+  const star=document.createElement("div");
+  star.classList.add("star");
+  star.innerHTML="✦";
+  star.style.left=Math.random()*100+"vw";
+  star.style.fontSize=Math.random()*25+10+"px";
+  star.style.animationDuration=Math.random()*4+5+"s";
+  document.body.appendChild(star);
+  setTimeout(()=>{star.remove();},8000);
 }
 setInterval(createStar,500);
 
+/* ------------------- PARTAGE ------------------- */
 function sharePage(){
-if(navigator.share){
-navigator.share({
-title:"Bon mois de Carême",
-text:"Un message spécial pour nos professeurs 🤲",
-url:window.location.href
-});
-}else{
-navigator.clipboard.writeText(window.location.href);
-alert("Lien copié !");
-}
+  if(navigator.share){
+    navigator.share({
+      title:"Bon mois de Carême",
+      text:"Un message spécial pour nos professeurs 🤲",
+      url:window.location.href
+    });
+  }else{
+    navigator.clipboard.writeText(window.location.href);
+    alert("Lien copié !");
+  }
 }
 </script>
 
 </body>
 </html>
-
